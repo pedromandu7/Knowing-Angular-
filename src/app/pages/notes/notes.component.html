@@ -1,0 +1,112 @@
+<div style="background: #ECECEC;padding:30px;">
+  <div nz-row [nzGutter]="8" *ngIf="!loading else fetchingData">
+
+    <!-- 
+
+      <nz-card nz-col [nzSpan]="8">
+        <nz-card-meta [nzTitle]="'Cafés'"></nz-card-meta>
+        <div class="card coffee" *ngFor="let coffee of coffees">
+          <label nz-checkbox [(ngModel)]="'checkbox'+coffee.id">{{coffee.value}}</label>
+          <nz-card-meta [nzDescription]="coffee.label"></nz-card-meta>
+        </div>
+        
+      </nz-card>
+      
+      <nz-card nz-col [nzSpan]="8">
+        <nz-card-meta [nzTitle]="'Juices'"></nz-card-meta>
+        <div class="card juice" *ngFor="let juice of juices">
+          <label nz-checkbox [(ngModel)]="'checkbox'+juice.id">{{juice.value}}</label>
+          <nz-card-meta [nzDescription]="juice.label"></nz-card-meta>
+        </div>
+      </nz-card>
+    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <nz-card nz-col [nzSpan]="8">
+      <nz-card-meta [nzTitle]="'Coffees'"></nz-card-meta>
+      <div class="card coffees">
+        <div style="border-bottom: 1px solid rgb(233, 233, 233);">
+          <label nz-checkbox [(ngModel)]="allCheckedCoffee" (ngModelChange)="updateAllChecked('coffees')"
+            [nzIndeterminate]="indeterminate">
+            Check all
+          </label>
+        </div>
+        <nz-checkbox-group [(ngModel)]="checkOptionsCoffee" (ngModelChange)="updateSingleChecked('coffees')">
+        </nz-checkbox-group>
+      </div>
+    </nz-card>
+
+    <nz-card nz-col [nzSpan]="8">
+      <nz-card-meta [nzTitle]="'Juices'"></nz-card-meta>
+      <div class="card juices">
+        <div style="border-bottom: 1px solid rgb(233, 233, 233);">
+          <label nz-checkbox [(ngModel)]="allCheckedJuice" (ngModelChange)="updateAllChecked('juices')"
+            [nzIndeterminate]="indeterminate">
+            Check all
+          </label>
+        </div>
+        <nz-checkbox-group [(ngModel)]="checkOptionsJuice" (ngModelChange)="updateSingleChecked('juices')">
+        </nz-checkbox-group>
+      </div>
+    </nz-card>
+
+    <nz-card nz-col [nzSpan]="8">
+      <nz-card-meta [nzTitle]="'Teas'"></nz-card-meta>
+      <div class="card teas">
+        <div style="border-bottom: 1px solid rgb(233, 233, 233);">
+          <label nz-checkbox [(ngModel)]="allChecked" (ngModelChange)="updateAllChecked('teas')"
+            [nzIndeterminate]="indeterminate">
+            Check all
+          </label>
+        </div>
+        <nz-checkbox-group [(ngModel)]="checkOptionsTea" (ngModelChange)="updateSingleChecked('teas')">
+        </nz-checkbox-group>
+      </div>
+    </nz-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+<ng-template #fetchingData>
+  <p>Carregando....</p>
+</ng-template>
+
+
+
+<!-- 
+
+<div style="border-bottom: 1px solid rgb(233, 233, 233);">
+  <label nz-checkbox [(ngModel)]="allChecked" (ngModelChange)="updateAllChecked()" [nzIndeterminate]="indeterminate">
+    Check all
+  </label>
+</div>
+<br />
+<nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="updateSingleChecked()"></nz-checkbox-group> -->
