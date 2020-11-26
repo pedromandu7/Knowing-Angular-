@@ -29,6 +29,9 @@
 
 
 
+    <!-- 
+    <form nz-form>
+      <nz-form-item> -->
 
 
 
@@ -57,7 +60,7 @@
       <div class="card juices">
         <div style="border-bottom: 1px solid rgb(233, 233, 233);">
           <label nz-checkbox [(ngModel)]="allCheckedJuice" (ngModelChange)="updateAllChecked('juices')"
-            [nzIndeterminate]="indeterminate">
+            [nzIndeterminate]="indeterminate1">
             Check all
           </label>
         </div>
@@ -70,8 +73,8 @@
       <nz-card-meta [nzTitle]="'Teas'"></nz-card-meta>
       <div class="card teas">
         <div style="border-bottom: 1px solid rgb(233, 233, 233);">
-          <label nz-checkbox [(ngModel)]="allChecked" (ngModelChange)="updateAllChecked('teas')"
-            [nzIndeterminate]="indeterminate">
+          <label nz-checkbox [(ngModel)]="allCheckedTea" (ngModelChange)="updateAllChecked('teas')"
+            [nzIndeterminate]="indeterminate2">
             Check all
           </label>
         </div>
@@ -82,7 +85,8 @@
 
 
 
-
+    <!-- </nz-form-item>
+    </form> -->
 
 
 
@@ -96,7 +100,7 @@
 </div>
 
 <ng-template #fetchingData>
-  <p>Carregando....</p>
+  L<i nz-icon [nzType]="'loading'"></i>ading...
 </ng-template>
 
 

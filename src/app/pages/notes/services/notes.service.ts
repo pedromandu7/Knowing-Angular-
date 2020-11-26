@@ -14,5 +14,11 @@ export class NotesService {
 
   getAllCoffess() {
     return this.http.get(this.url);
-  }
+  };
+  postCoffess() {
+    return this.http.get(this.url);
+  };
+  deleteCoffess() {
+    return this.http.get(this.url);
+  };
 }

@@ -16,12 +16,17 @@ export class NotesComponent implements OnInit, OnDestroy {/*
 
   allCheckedCoffee = false;
   allCheckedJuice = false;
-  allChecked = false;
+  allCheckedTea = false;
   indeterminate = false;
-  checkOptionsCoffee = [];
-  checkOptionsJuice = [];
-  checkOptionsTea = [];
+  indeterminate1 = false;
+  indeterminate2 = false;
+  singleObj: string;
+  checkOptionsCoffee = [];//array with objects received of database
+  checkOptionsJuice = [];// "
+  checkOptionsTea = [];// "
   check: any;
+  loading = true; /* variável criada para verificar se os dados do banco foram 
+  carregados, após os dados carregados se faz necessário uma mutação na mesma de 'true' para 'false'*/
 
   constructor(
     private notesService: NotesService,
@@ -33,79 +38,155 @@ export class NotesComponent implements OnInit, OnDestroy {/*
         takeUntil(this.unsubscribe$)
       )
       .subscribe((val: any) => {
-        console.log(val);// printa valor que se encontra no  banco
+        // console.log(val);// printa valor que adivindo do  banco
         for (const i in val.coffees) {
-          this.checkOptionsCoffee.push(val.coffees[i]);
+          this.checkOptionsCoffee.push(val.coffees[i]); //recebendo valores do bando e atribuindo
         };
         for (const i in val.juices) {
-          this.checkOptionsJuice.push(val.juices[i]);
+          this.checkOptionsJuice.push(val.juices[i]);//recebendo valores do bando e atribuindo
         };
         for (const i in val.teas) {
-          this.checkOptionsTea.push(val.teas[i]);
+          this.checkOptionsTea.push(val.teas[i]);//recebendo valores do bando e atribuindo
         };
-        this.coffees = this.checkOptionsCoffee;//atribuindo dados do banco
-        this.juices = this.checkOptionsJuice;//atribuindo dados do banco
-        this.teas = this.checkOptionsTea;//atribuindo dados do banco
+        // this.coffees = this.checkOptionsCoffee;//atribuindo dados do banco
+        // this.juices = this.checkOptionsJuice;//atribuindo dados do banco
+        // this.teas = this.checkOptionsTea;//atribuindo dados do banco
         this.loading = false;
       });
   }
 
-  updateAllChecked(objCheck): void {
+  updateAllChecked(objCheck: string): void {
     this.checkOptions(objCheck);//se pá vai dar erro aqui depois
 
-    console.log(objCheck);
-    this.indeterminate = false;
+    // console.log(objCheck);
 
+    //coffee
     if (this.allCheckedCoffee) {
+      this.indeterminate = false;
+
       if (objCheck === 'coffees') {
         this.checkOptionsCoffee = this.check.map(item => {
           return { ...item, checked: true }
         })
 
-      } else if (objCheck === 'juices') {
-        this.checkOptionsJuice = this.check.map(item => {
-          return { ...item, checked: true }
-        })
-
-      } else {
-        this.checkOptionsTea = this.check.map(item => {
-          return { ...item, checked: true }
-        })
-
       }
+
 
     } else {
       if (objCheck === 'coffees') {
+        this.indeterminate = false;
+
         this.checkOptionsCoffee = this.check.map(item => {
           return { ...item, checked: false }
         })
 
-      } else if (objCheck === 'juices') {
+      }
+
+    }
+
+    //juice
+    if (this.allCheckedJuice) {
+      this.indeterminate1 = false;
+
+      if (objCheck === 'juices') {
+        this.checkOptionsJuice = this.check.map(item => {
+          return { ...item, checked: true }
+        })
+
+      }
+
+
+    } else {
+      if (objCheck === 'juices') {
+        this.indeterminate1 = false;
+
         this.checkOptionsJuice = this.check.map(item => {
           return { ...item, checked: false }
         })
 
-      } else {
+      }
+
+    }
+
+    if (this.allCheckedTea) {
+      this.indeterminate2 = false;
+
+      if (objCheck === 'teas') {
+        this.checkOptionsTea = this.check.map(item => {
+          return { ...item, checked: true }
+        })
+
+      }
+
+
+    } else {
+      if (objCheck === 'teas') {
+        this.indeterminate2 = false;
+
         this.checkOptionsTea = this.check.map(item => {
           return { ...item, checked: false }
         })
 
       }
+
     }
+
+
   }
 
-  updateSingleChecked(singleObjCheck): void {
-    this.checkOptions(singleObjCheck);//se pá vai dar erro aqui depois
 
-    console.log(this.check);
+
+
+
+
+
+
+
+
+
+
+
+  updateSingleChecked(singleObjCheck: string): void {
+    this.checkOptions(singleObjCheck);//se pá vai dar erro aqui depois
+    this.singleObj = singleObjCheck;
+    // console.log(this.check);
     if (this.check.every(item => !item.checked)) {
-      this.allChecked = false;
-      this.indeterminate = false;
+      if (this.singleObj == "coffees") {
+        this.allCheckedCoffee = false;
+        this.indeterminate = false;
+      } else if (this.singleObj == "juices") {
+        this.allCheckedJuice = false;
+        this.indeterminate1 = false;
+      } else if (this.singleObj == "teas") {
+        this.allCheckedTea = false;
+        this.indeterminate2 = false;
+      }
+
     } else if (this.check.every(item => item.checked)) {
-      this.allChecked = true;
-      this.indeterminate = false;
+      if (this.singleObj == "coffees") {
+        this.allCheckedCoffee = true;
+        this.indeterminate = false;
+      } else if (this.singleObj == "juices") {
+        this.allCheckedJuice = true;
+        this.indeterminate1 = false;
+      } else if (this.singleObj == "teas") {
+        this.allCheckedTea = true;
+        this.indeterminate2 = false;
+      }
     } else {
-      this.indeterminate = true;
+      if (this.singleObj == "coffees") {
+        this.allCheckedCoffee = false;
+
+        this.indeterminate = true;
+      } else if (this.singleObj == "juices") {
+        this.allCheckedJuice = false;
+
+        this.indeterminate1 = true;
+      } else if (this.singleObj == "teas") {
+        this.allCheckedTea = false;
+
+        this.indeterminate2 = true;
+      }
     }
   }
 
@@ -123,11 +204,7 @@ export class NotesComponent implements OnInit, OnDestroy {/*
 
   private unsubscribe$ = new Subject(); //Não sei para que serve
 
-  coffees: any[];// variavel criada para receber dados do banco
-  juices: any[];// variavel criada para receber dados do banco
-  teas: any[];// variavel criada para receber dados do banco
-  loading = true; /*/ variável criada para verificar se os dados do banco foram 
-  carregados, após os dados carregados se faz necessário uma mutação na mesma de 'true' para 'false'*/
+
 
   // checkbox1;
   // checkbox2;

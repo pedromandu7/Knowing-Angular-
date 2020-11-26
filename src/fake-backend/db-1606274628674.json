@@ -1,0 +1,80 @@
+{
+  "coffees": [
+    {
+      "id": 1,
+      "value": "Black Coffee",
+      "label": "Café quente",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "value": "Ice Coffee",
+      "label": "Café frio",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "value": "json-server3",
+      "label": "typicode3",
+      "checked": false
+    },
+    {
+      "id": 4,
+      "value": "json-server4",
+      "label": "typicode2",
+      "checked": false
+    },
+    {
+      "id": 5,
+      "value": "json-server5",
+      "label": "typicode2",
+      "checked": false
+    },
+    {
+      "id": 6,
+      "value": "json-server6",
+      "label": "typicode2",
+      "checked": false
+    }
+  ],
+  "juices": [
+    {
+      "id": 5,
+      "value": "Watermelon",
+      "label": "typicode2",
+      "checked": false
+    },
+    {
+      "id": 5,
+      "value": "Apple",
+      "label": "typicode2",
+      "checked": false
+    },
+    {
+      "id": 6,
+      "value": "orange",
+      "label": "typicode2",
+      "checked": false
+    }
+  ],
+  "teas": [
+    {
+      "id": 1,
+      "value": "Watermelon",
+      "label": "Watermelon",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "value": "Arroz",
+      "label": "Arroz",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "value": "Feijão",
+      "label": "Feijão",
+      "checked": false
+    }
+  ]
+}
